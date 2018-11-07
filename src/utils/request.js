@@ -1,19 +1,27 @@
-const baseUrl = 'https://mywebsite.com/endpoint/'
-
 
 const request = (params) => {
-    const { method, headers, body }
+    const { method = "", headers = {}, body = "", url = '', baseUrl = "https://www.baidu.com/" } = params;
     return new Promise((resolve, reject) => {
-        fetch("https://mywebsite.com/endpoint/", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                firstParam: "yourValue",
-                secondParam: "yourOtherValue"
+        fetch(`${baseUrl}url`, {
+                method: method || "POST",
+                headers: Object.assign({}, {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                }, headers),
+                body
             })
-        });
+            .then(response =>
+                response.json() //把数据解析成json格式,然后取出
+            )
+            .then(result => {
+                resolve(result); //表示完成
+            })
+            .catch(error => {
+                reject(error); //表示失败
+            })
     })
+}
+
+module.exports = {
+    request
 }
