@@ -30,7 +30,7 @@ export default class Mine extends Component<Props> {
     }
     render() {
         return (
-            <View>
+            <View style={{ width: 100 + "%" }}>
                 <Text>mine</Text>
                 <Button 
                 title={'Mine'}
