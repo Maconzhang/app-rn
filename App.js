@@ -37,8 +37,10 @@ const App = createBottomTabNavigator({
     // ***************android属性***************
     // showLabel:true, //是否显示label，默认开启。
     // scrollEnabled:true, // 是否启用可滚动选项卡。
-    // tabStyle:{}, // tab的样式。
-    // activeTintColor:'', // label和icon的前景色 活跃状态下（选中） 。
+    tabStyle:{
+      backgroundColor: 'green'
+    }, // tab的样式。
+    activeTintColor:'black', // label和icon的前景色 活跃状态下（选中） 。
     // inactiveTintColor:'', // label和icon的前景色 不活跃状态下(未选中)。
     // pressColor: 'material', // material涟漪效果的颜色（安卓版本需要大于5.0）。
     showIcon: true, // 是否显示图标，默认关闭。

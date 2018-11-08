@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
-import { View, Image, Text, Button } from 'react-native'
+import { View, Text, Button, TextInput } from 'react-native'
 
-
-export default class Home extends Component<{}> {
+import DashBoard from '../../components/dashboard/index.js'
+export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this._inputChange = this._inputChange.bind(this);
+        this.state= {
+            customNo: 123451
+        }
+    }
     static navigationOptions = ({ navigation, screenProps }) => ({
         headerTitle: 'All',
         headerStyle: {
@@ -24,6 +31,13 @@ export default class Home extends Component<{}> {
         console.log('Pressed!', this.props);
     }
 
+    _inputChange(e) {
+        console.log('text', e, this);
+        this.setState({
+            customNo: e
+        })
+    }
+
     render() {
         return (
             <View>
@@ -32,6 +46,11 @@ export default class Home extends Component<{}> {
                 title={'Home'}
                 color="#FCE74E"
                 onPress={ () => this._handlePress() }></Button>
+                <DashBoard number={this.state.customNo}></DashBoard>
+                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                    onChangeText={this._inputChange}
+                    value={this.state.customNo}
+                    defaultValue={this.state.customNo}></TextInput>
             </View>
         )
     }
