@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TextInput } from 'react-native'
-
+import { View, Text, Button, TextInput, StyleSheet, Alert } from 'react-native'
+import { openLock, closeLock } from '../../api/index'
 import DashBoard from '../../components/dashboard/index.js'
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this._inputChange = this._inputChange.bind(this);
         this.state= {
-            customNo: 123451
+            customNo: '987654'
         }
     }
     static navigationOptions = ({ navigation, screenProps }) => ({
@@ -38,9 +38,20 @@ export default class Home extends Component {
         })
     }
 
+    _openLock() {
+        console.log('_openLock', this.state.customNo);
+        // openLock(this.state.customNo);
+        Alert.alert('_openLock', this.state.customNo);
+    }
+
+    _closeLock() {
+        console.log('_closeLock');
+        // closeLock(this.state.customNo);
+    }
+
     render() {
         return (
-            <View>
+            <View style={newStyle.container}>
                 <Text>home</Text>
                 <Button 
                 title={'Home'}
@@ -51,7 +62,39 @@ export default class Home extends Component {
                     onChangeText={this._inputChange}
                     value={this.state.customNo}
                     defaultValue={this.state.customNo}></TextInput>
+
+                <View style={newStyle.btnClass}>
+                    <View style={newStyle.btn}>
+                        <Button title={'开锁'}
+                        style={newStyle.btn}
+                        color="black"
+                        onPress={ () => this._openLock() }>
+                        </Button>
+                    </View>
+                    <View style={newStyle.btn}>
+                        <Button title={'关锁'}
+                        style={newStyle.btn}
+                        color="black"
+                        onPress={ () => this._closeLock() }>
+                        </Button>
+                    </View>
+                </View>
             </View>
         )
     }
 }
+
+const newStyle = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    btnClass: {
+        width: 30 + "%",
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        margin: 5
+    },
+    btn: {
+        margin: 10,
+    }
+})

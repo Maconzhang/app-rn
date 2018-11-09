@@ -66,9 +66,6 @@ export default class App extends Component<Props> {
                 onPress={() => this._handlePress()}>
             </Button>
         </View>
-   
-         
-            
       </View>
     );
   }
