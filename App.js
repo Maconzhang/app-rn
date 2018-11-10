@@ -1,20 +1,24 @@
 import Home from './src/page/home/home'
 import Mine from './src/page/mine/mine'
+import Share from './src/page/share/share'
 import {
   Platform
 } from 'react-native'
 import {
   createStackNavigator,
   TabNavigator,
-  createBottomTabNavigator 
+  createBottomTabNavigator
 } from 'react-navigation';
 // const rnnav = require('react-navigation');
 const App = createBottomTabNavigator({
+  Mine: {
+    screen: Mine,
+  },
   Home: {
     screen: Home
   },
-  Mine: {
-    screen: Mine
+  Share: {
+    screen: Share
   }
 }, {
   tabBarPosition: 'bottom', // 设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom')
@@ -37,25 +41,24 @@ const App = createBottomTabNavigator({
     // ***************android属性***************
     // showLabel:true, //是否显示label，默认开启。
     // scrollEnabled:true, // 是否启用可滚动选项卡。
-    tabStyle:{
-      backgroundColor: 'green'
+    tabStyle: {
+      backgroundColor: 'green',
+      borderColor: 'black'
     }, // tab的样式。
-    activeTintColor:'black', // label和icon的前景色 活跃状态下（选中） 。
-    // inactiveTintColor:'', // label和icon的前景色 不活跃状态下(未选中)。
+    activeTintColor: 'white', // label和icon的前景色 活跃状态下（选中） 。
+    inactiveTintColor: 'black', // label和icon的前景色 不活跃状态下(未选中)。
     // pressColor: 'material', // material涟漪效果的颜色（安卓版本需要大于5.0）。
     showIcon: true, // 是否显示图标，默认关闭。
     style: {
       height: Platform.OS == "android" ? 60 : 50,
       backgroundColor: 'gray',
       borderBottomWidth: 1,
-      borderBottomColor: '#E8E8E8',
-      borderColor: '#E8E8E8',
       border: 1,
       elevation: 1,
       paddingTop: Platform.OS == "android" ? 0 : 5
     }, // tabbar的样式。
     labelStyle: {
-      fontSize: 30
+      fontSize: 16
     }, // label的样式。
     upperCaseLabel: false, // 是否使标签大写，默认为true。
     indicatorStyle: {

@@ -1,29 +1,28 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button } from 'react-native'
-// import nav from 'react-navigation' 
-const nav = require('react-navigation');
+const mine        = require('../../img/profile.png')
+const mine_active = require('../../img/profile-actived.png')
 
-export default class Mine extends Component<Props> {
+export default class Mine extends Component {
     constructor(props) {
         super(props);
         this._handlePress = this._handlePress.bind(this);
     }
+
     static navigationOptions = ({ navigation, screenProps }) => ({
-        headerTitle: 'Mine22',
-        headerStyle: {
-            borderBottomColor:'#f2f2f2',
-            borderColor:'#f2f2f2',
-            elevation: 0
-        },
-        headerTitleStyle: {
-            fontSize: 20,
-            color: 'black'
-        },
+        header:null,
         gesturesEnabled: true,
         tabBarVisible: true,
-        tabBarLabel: 'Mine',
+        tabBarLabel: 'home',
+        tabBarIcon: (({ tintColor, focused }) => {
+            return (
+                <Image
+                    source={!focused ? mine : mine_active}
+                    style={[{height: 20, width: 20}, {resizeMode: 'stretch'}]}
+                />
+            )
+        }),
     })
-
     _handlePress() {
         this.props.navigation.navigate('Home')
         console.log('Pressed!', this.props);

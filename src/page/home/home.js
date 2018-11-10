@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TextInput, StyleSheet, Alert } from 'react-native'
+import { View, Text, Button, Image, StyleSheet, Alert } from 'react-native'
 import { openLock, closeLock } from '../../api/index'
 import DashBoard from '../../components/dashboard/index.js'
+const mine        = require('../../img/home.png')
+const mine_active = require('../../img/home-actived.png')
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -10,24 +12,24 @@ export default class Home extends Component {
             customNo: '987654'
         }
     }
+
     static navigationOptions = ({ navigation, screenProps }) => ({
-        headerTitle: 'All',
-        headerStyle: {
-            borderBottomColor:'#f2f2f2',
-            borderColor:'#f2f2f2',
-            elevation: 0
-        },
-        headerTitleStyle: {
-            fontSize: 20,
-            color: 'black'
-        },
+        header:null,
         gesturesEnabled: true,
         tabBarVisible: true,
-        tabBarLabel: 'Home',
+        tabBarLabel: 'home',
+        tabBarIcon: (({ tintColor, focused }) => {
+            return (
+                <Image
+                    source={!focused ? mine : mine_active}
+                    style={[{height: 20, width: 20}, {resizeMode: 'stretch'}]}
+                />
+            )
+        }),
     })
 
     _handlePress() {
-        this.props.navigation.navigate('Mine')
+        this.props.navigation.navigate('Share');
         console.log('Pressed!', this.props);
     }
 
@@ -52,33 +54,12 @@ export default class Home extends Component {
     render() {
         return (
             <View style={newStyle.container}>
-                <Text>home</Text>
+                <Text>home1</Text>
                 <Button 
-                title={'Home'}
-                color="#FCE74E"
-                onPress={ () => this._handlePress() }></Button>
-                <DashBoard number={this.state.customNo}></DashBoard>
-                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                    onChangeText={this._inputChange}
-                    value={this.state.customNo}
-                    defaultValue={this.state.customNo}></TextInput>
-
-                <View style={newStyle.btnClass}>
-                    <View style={newStyle.btn}>
-                        <Button title={'开锁'}
-                        style={newStyle.btn}
-                        color="black"
-                        onPress={ () => this._openLock() }>
-                        </Button>
-                    </View>
-                    <View style={newStyle.btn}>
-                        <Button title={'关锁'}
-                        style={newStyle.btn}
-                        color="black"
-                        onPress={ () => this._closeLock() }>
-                        </Button>
-                    </View>
-                </View>
+                    title={'Home'}
+                    color="#FCE74E"
+                    onPress={ () => this._handlePress() }>
+                </Button>
             </View>
         )
     }

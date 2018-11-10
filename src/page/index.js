@@ -1,16 +1,29 @@
 import React from 'react'
-import { Platform } from 'react-native'
-import { StackNavigator, TabNavigator } from 'react-navigation'
+import {
+    Platform
+} from 'react-native'
+import {
+    StackNavigator,
+    TabNavigator
+} from 'react-navigation'
 import Home from './Home'
 import Mine from './Mine'
 
-const Tab = TabNavigator({
+const Tab = createBottomTabNavigator({
     Home: {
-        screen: Home
+        screen: Home,
+        navigationOptions: () => ({
+            title: `Home`,
+            headerBackTitle: null
+        }),
     },
-    // Mine: {
-    //     screen: Mine
-    // }
+    Mine: {
+        screen: Mine,
+        navigationOptions: () => ({
+            title: `Mine`,
+            headerBackTitle: null
+        }),
+    }
 }, {
     tabBarPosition: 'bottom', // 设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom')
     swipeEnabled: false, // 是否允许在标签之间进行滑动。
@@ -40,11 +53,11 @@ const Tab = TabNavigator({
         style: {
             height: Platform.OS == "android" ? 60 : 50,
             backgroundColor: 'white',
-            borderBottomWidth:1,
-            borderBottomColor:'#E8E8E8',
-            borderColor:'#E8E8E8',
+            borderBottomWidth: 1,
+            borderBottomColor: '#E8E8E8',
+            borderColor: '#E8E8E8',
             elevation: 1,
-            paddingTop:Platform.OS == "android" ? 0 : 5
+            paddingTop: Platform.OS == "android" ? 0 : 5
         }, // tabbar的样式。
         labelStyle: {
             fontSize: 12
@@ -56,14 +69,13 @@ const Tab = TabNavigator({
 
     }
 })
-
+console.log('tab', Tab);
 // 将需要跳转的页面注册在这里，全局才可以跳转
 export default Routers = StackNavigator({
     // 将Tab包裹在StackNavigator里面可以保证跳转页面的时候隐藏tabBar
     Tab: {
         screen: Tab
     },
-     
 }, {
-    mode:'Home'
+    mode: 'Home2'
 })
