@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, Image, StyleSheet, Alert, ActivityIndicator } from 'react-native'
+import { View, Text, Button, Image, StyleSheet, Alert, ActivityIndicator, ScrollView } from 'react-native'
 import { location, daily, life } from '../../api/weather'
 import { openLock, closeLock } from '../../api/index'
 import { request } from '../../api/request'
@@ -169,7 +169,7 @@ export default class Home extends Component {
                         <ActivityIndicator size="large" color="#0000ff" />
                         <ActivityIndicator size="small" color="#00ff00" />
                     </View> 
-                :  <View>
+                :  <ScrollView>
                         <View style={newStyle.containerHeader}>
                             <View>
                                 <Text style={[newStyle.txt1, newStyle.bigTxt]}>
@@ -228,7 +228,7 @@ export default class Home extends Component {
                         </View>
                         <WeatherLife lifeInfo={this.state.lifeInfo}></WeatherLife>
                         <Example></Example>
-                    </View>
+                    </ScrollView>
              }
             </View>
         )
