@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, Image, StyleSheet, Alert } from 'react-native'
+import { View, Text, Button, Image, StyleSheet, Alert, ActivityIndicator } from 'react-native'
 import { location, daily, life } from '../../api/weather'
 import { openLock, closeLock } from '../../api/index'
 import { request } from '../../api/request'
@@ -7,6 +7,13 @@ import DashBoard from '../../components/dashboard/index.js'
 const mine        = require('../../img/home.png')
 const mine_active = require('../../img/home-actived.png');
 const img_arr = [require('../../img/weather/0.png'),require('../../img/weather/1.png'),require('../../img/weather/2.png')]
+
+import WeatherLife from '../../components/weatherLife/weatherLife'
+import Example from '../../components/example/example'
+
+var mydate = new Date();
+var myddy = mydate.getDay();//获取存储当前日期
+var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +22,7 @@ export default class Home extends Component {
         this._renderImage = this._renderImage.bind(this);
         this.state = {
             customNo: '98765411111111111111',
-            locationInfo: [],
+            locationInfo: '',
             dailyInfo: '',
             lifeInfo: '',
             suggestType: [
@@ -25,8 +32,11 @@ export default class Home extends Component {
                 { label: '旅游', prop: 'travel' },
                 { label: '感冒', prop: 'brief' },
                 { label: '运动', prop: 'sport' },
-            ]
+            ],
+            day: weekday[myddy],
+            showLoading: true
         }
+        
     }
 
     static navigationOptions = ({ navigation, screenProps }) => ({
@@ -49,24 +59,24 @@ export default class Home extends Component {
         // this._fetchWeather();
     }
     componentWillMount () {
-        this._fetchWeather();
-        daily().then(res => {
-            this.setState({dailyInfo: res[0]})
-        })
-        life().then(res => {
-            this.setState({lifeInfo: res[0]})
-        })
          
     }
-    componentDidMount () {
-        // this._fetchWeather();
+    async componentDidMount () {
+        const localInfo = await location();
+        if (!localInfo) return
+        const dailyInfo = await daily();
+        const lifeInfo = await life();
+        this.setState({ 
+            locationInfo: localInfo,
+            dailyInfo: dailyInfo[0],
+            lifeInfo: lifeInfo[0],
+            showLoading: false
+        })
     }
     componentWillReceiveProps (nextProps) {
-        // this._fetchWeather();
     }
     shouldComponentUpdate (nextProps,nextState) {
-        // if (this.state.locationInfo.length == 0) return false;
-        return true
+       return true
     }
     componentWillUpdate (nextProps,nextState) {
     }
@@ -152,47 +162,72 @@ export default class Home extends Component {
        
         return (
             <View style={newStyle.container}>
-             {  !this.state.locationInfo.length || !this.state.locationInfo || !this.state.lifeInfo
-                ?  <Text>Loading</Text> 
+             {  this.state.showLoading
+                ?   <View>
+                        <ActivityIndicator size="large" color="red" />
+                        <ActivityIndicator size="small" color="#00ff00" />
+                        <ActivityIndicator size="large" color="#0000ff" />
+                        <ActivityIndicator size="small" color="#00ff00" />
+                    </View> 
                 :  <View>
                         <View style={newStyle.containerHeader}>
                             <View>
                                 <Text style={[newStyle.txt1, newStyle.bigTxt]}>
                                     { this.state.locationInfo[0]['location']['name'] }
                                 </Text>
-                                <Text style={newStyle.txt1}> {this.state.locationInfo[0]['last_update']}</Text> 
+                                <Text style={newStyle.txt1}> 上次更新: {this.state.locationInfo[0]['last_update']}</Text> 
                                 <View style={{ flex: 1,flexDirection: 'row', marginTop: 20 }}>
                                     <View style={{ flex: 1, height:100, flexDirection: 'row-reverse'}}>
                                         { this._renderImage(this.state.locationInfo[0]['now']['code'], {}) }
                                     </View>
                                     <View style={{ flex: 1, height:100, paddingTop: 20}}>
                                         <Text style={{fontSize: 50, color: 'white', height: 50, lineHeight: 50}}>
-                                        {this.state.locationInfo[0]['now']['temperature']}°C
+                                            {this.state.locationInfo[0]['now']['temperature']}°C
                                         </Text>
                                         <Text style={{fontSize: 20, color: 'white', height: 20, lineHeight: 20}}>
-                                            {this.state.locationInfo[0]['now']['text']}°c
+                                            {this.state.locationInfo[0]['now']['text']}
                                         </Text>
                                     </View>
                                 </View>
                                 <View style={{ flex: 1, marginTop: 120 }}>
-                                    <Text style={{fontSize: 20, color: 'white', height: 20, lineHeight: 20}}>Today Mon 27 JUN</Text>
+                                    <Text style={{fontSize: 20, color: 'white', height: 20, lineHeight: 20}}>{this.state.day}</Text>
                                 </View>
                             </View>
                         </View>
+                        <View style={{
+                            backgroundColor: 'white',
+                            marginTop: -25,
+                            marginLeft: 10,
+                            marginRight: 10,
+                            borderRadius: 4,
+                            paddingBottom: 10
+                        }}>
                         { 
                             this.state.dailyInfo.daily.map((item, index) => {
                                 return(
-                                    <View style={{ flexDirection: 'row', marginTop: 10, boxSize: 'box-content', padding: 10, backgroundColor: 'gray'}} key={index}> 
-                                        <Text style={{ width: '50%', color: 'white' }}>{item.date}</Text>
-                                        <View style={{ width: '30%', color: 'white'  }}> 
+                                    <View style={{ 
+                                            flexDirection: 'row', 
+                                            marginTop: 10, 
+                                            boxSize: 'box-content', 
+                                            padding: 10, 
+                                            borderBottomColor: '#F1F3F4', 
+                                            borderBottomWidth: 2,
+                                            marginLeft: 10,
+                                            marginRight: 10
+                                        }} key={index}> 
+                                        <Text style={{ width: '50%' }}>{item.date}</Text>
+                                        <View style={{ width: '30%' }}> 
                                             { this._renderImage(item.code_day, {width: 40, height: 20}) } 
                                         </View>
-                                        <Text style={{ width: '12%', color: 'white'  }}>{item.high}/{item.low}°c</Text>
-                                        <Text style={{ width: '8%', color: 'white'  }}>{item.text_day}</Text>
+                                        <Text style={{ width: '12%' }}>{item.high}/{item.low}°C</Text>
+                                        <Text style={{ width: '8%' }}>{item.text_day}</Text>
                                     </View>
                                 )
                             })
                         }
+                        </View>
+                        <WeatherLife lifeInfo={this.state.lifeInfo}></WeatherLife>
+                        <Example></Example>
                     </View>
              }
             </View>
@@ -203,6 +238,7 @@ export default class Home extends Component {
 const newStyle = StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: '#f9f9f9'
     },
     containerHeader: {
         height: 250,
@@ -233,6 +269,7 @@ const newStyle = StyleSheet.create({
     },
     weatherItem: {
         flex: 1,
-        display: 'flex'
+        display: 'flex',
+        
     }
 })
