@@ -9,6 +9,7 @@ export default class Share extends Component {
     }
 
     static navigationOptions = ({ navigation, screenProps }) => ({
+        headerTitle: 'ShareShare',
         header:null,
         gesturesEnabled: true,
         tabBarVisible: true,

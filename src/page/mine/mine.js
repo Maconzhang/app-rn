@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import { View, Image, Text, Button } from 'react-native'
 const mine        = require('../../img/profile.png')
 const mine_active = require('../../img/profile-actived.png')
-
+class LogoTitle extends React.Component {
+    render() {
+      return (
+        <Text>1232131</Text>
+      );
+    }
+  }
 export default class Mine extends Component {
     constructor(props) {
         super(props);
@@ -10,10 +16,23 @@ export default class Mine extends Component {
     }
 
     static navigationOptions = ({ navigation, screenProps }) => ({
-        header:null,
+        title: 'mine2222222',
+        headerTitle: <LogoTitle />,
+        headerStyle: {
+            borderBottomWidth: 10,
+            borderColor: 'black'
+        },
+        headerLeft: (
+            <Button
+              onPress={() => navigation.navigate('Share')}
+              title="Info"
+              color="#fff"
+            />
+          ),
         gesturesEnabled: true,
         tabBarVisible: true,
-        tabBarLabel: 'home',
+        tabBarLabel: 'Mine',
+        title: 'mineminemine',
         tabBarIcon: (({ tintColor, focused }) => {
             return (
                 <Image
@@ -23,10 +42,12 @@ export default class Mine extends Component {
             )
         }),
     })
+
     _handlePress() {
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate('MineDetail')
         console.log('Pressed!', this.props);
     }
+
     render() {
         return (
             <View style={{ width: 100 + "%" }}>

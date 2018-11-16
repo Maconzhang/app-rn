@@ -40,10 +40,10 @@ export default class Home extends Component {
     }
 
     static navigationOptions = ({ navigation, screenProps }) => ({
-        header:null,
-        gesturesEnabled: true,
-        tabBarVisible: true,
-        tabBarLabel: 'home',
+        // header:null,
+        // gesturesEnabled: true,
+        // tabBarVisible: true,
+        // tabBarLabel: 'home',
         tabBarIcon: (({ tintColor, focused }) => {
             return (
                 <Image
