@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button } from 'react-native'
+import MineGroup from './MineGroup'
 const mine        = require('../../img/profile.png')
 const mine_active = require('../../img/profile-actived.png')
 class LogoTitle extends React.Component {
@@ -9,6 +10,7 @@ class LogoTitle extends React.Component {
       );
     }
   }
+import HeadLeft from './detail/HeadLeft'
 export default class Mine extends Component {
     constructor(props) {
         super(props);
@@ -16,23 +18,25 @@ export default class Mine extends Component {
     }
 
     static navigationOptions = ({ navigation, screenProps }) => ({
-        title: 'mine2222222',
-        headerTitle: <LogoTitle />,
         headerStyle: {
-            borderBottomWidth: 10,
-            borderColor: 'black'
+            backgroundColor:'#fff',
+            borderBottomWidth:0,
+            elevation: 0
         },
+        header: null,
+        headerTitle: "我的11",
+        headerRightContainerStyle: {
+            padding: 20,
+            backgroundColor: 'red'
+        },
+        tabBarLabel: '我的',
         headerLeft: (
-            <Button
-              onPress={() => navigation.navigate('Share')}
-              title="Info"
-              color="#fff"
-            />
-          ),
-        gesturesEnabled: true,
-        tabBarVisible: true,
-        tabBarLabel: 'Mine',
-        title: 'mineminemine',
+            <HeadLeft navigation={navigation} />
+        ),
+        // gesturesEnabled: true,
+        // tabBarVisible: true,
+        // tabBarLabel: 'Mine',
+        // title: 'mineminemine',
         tabBarIcon: (({ tintColor, focused }) => {
             return (
                 <Image
@@ -56,6 +60,7 @@ export default class Mine extends Component {
                 title={'Mine'}
                 color="red"
                 onPress={ () => this._handlePress() }></Button>
+                <MineGroup></MineGroup>
             </View>
         )
     }

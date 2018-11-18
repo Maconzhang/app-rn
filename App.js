@@ -1,4 +1,5 @@
 import Home from './src/page/home/home'
+import MineGroup from './src/page/mine/MineGroup'
 import Mine from './src/page/mine/mine'
 import Share from './src/page/share/share'
 import {
@@ -7,12 +8,14 @@ import {
 import {
   createStackNavigator,
   TabNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createMaterialTopTabNavigator,
+  createMaterialBottomTabNavigator
 } from 'react-navigation';
 // const rnnav = require('react-navigation');
 import MineDetail from './src/page/mine/detail/mineDetail'
 
-const App = createBottomTabNavigator(
+const App = createMaterialTopTabNavigator(
   {
     Mine: {
       screen: Mine,
@@ -24,11 +27,11 @@ const App = createBottomTabNavigator(
       screen: Share
     }
   }, {
-    tabBarPosition: 'bottom', // 设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom')
+    tabBarPosition: 'top', // 设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom')
     swipeEnabled: false, // 是否允许在标签之间进行滑动。
     animationEnabled: false, // 是否在更改标签时显示动画。
     lazy: true, // 是否根据需要懒惰呈现标签，而不是提前制作，意思是在app打开的时候将底部标签栏全部加载，默认false,推荐改成true哦。
-    initialRouteName: 'Share', // 设置默认的页面组件
+    initialRouteName: 'Mine', // 设置默认的页面组件
     backBehavior: 'none', // 按 back 键是否跳转到第一个Tab(首页)， none 为不跳转
     tabBarOptions: {
       // ***************iOS属性***************
@@ -70,10 +73,28 @@ const App = createBottomTabNavigator(
 
     }
   });
-  const MineStack = createStackNavigator({
+  const MineStack = createBottomTabNavigator({
     App: {
       screen: App
     },
     MineDetail: MineDetail,
+  }, {
+    header: null
   });
-export default App;
+
+  
+  const index = createStackNavigator({
+    MineStack: MineStack
+  })
+
+  index.navigationOptions = ({navigation, screenProps}) => ({
+    header: null
+  })
+
+
+  const test = createStackNavigator({
+    Mine: {
+      screen: Mine
+    }
+  })
+export default MineStack;

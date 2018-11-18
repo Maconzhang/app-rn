@@ -7,24 +7,25 @@ import { View, Text, Button, Slider, Picker, Switch, ScrollView, Modal,
     CameraRoll,
     DatePickerAndroid
  } from 'react-native'
-
+import HeadLeft from './HeadLeft'
 
  export default class mineDetail extends Component {
     static navigationOptions = ({ navigation, screenProps }) => ({
-        header:null,
-        headerTitle: 'ShareShare',
-        title: 'tttttt',
-        gesturesEnabled: true,
-        tabBarVisible: true,
+        hearder: null,
+        headerStyle: {
+            backgroundColor:'#fff',
+            borderBottomWidth:0,
+            elevation: 0
+        },
+        headerRightContainerStyle: {
+            padding: 20,
+            backgroundColor: 'red'
+        },
         tabBarLabel: 'mineDetail',
-        tabBarIcon: (({ tintColor, focused }) => {
-            return (
-                <Image
-                    source={!focused ? mine : mine_active}
-                    style={[{height: 20, width: 20}, {resizeMode: 'stretch'}]}
-                />
-            )
-        }),
+        headerLeft: (
+            <HeadLeft navigation={navigation} />
+        ),
+        
     })
      render() {
          return(

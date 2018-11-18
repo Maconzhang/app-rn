@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, Button, Image, StyleSheet, Alert, ActivityIndicator, ScrollView } from 'react-native'
+import { View, Text, Button, Image, StyleSheet, Alert, ActivityIndicator, ScrollView,
+TextInput } from 'react-native'
 import { location, daily, life } from '../../api/weather'
 import { openLock, closeLock } from '../../api/index'
 import { request } from '../../api/request'
@@ -40,7 +41,7 @@ export default class Home extends Component {
     }
 
     static navigationOptions = ({ navigation, screenProps }) => ({
-        // header:null,
+        header:null,
         // gesturesEnabled: true,
         // tabBarVisible: true,
         // tabBarLabel: 'home',
@@ -226,6 +227,7 @@ export default class Home extends Component {
                             })
                         }
                         </View>
+                        <TextInput></TextInput>
                         <WeatherLife lifeInfo={this.state.lifeInfo}></WeatherLife>
                         <Example></Example>
                     </ScrollView>
