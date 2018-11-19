@@ -64,6 +64,8 @@ export default class Home extends Component {
     }
     async componentDidMount () {
         const localInfo = await location();
+        console.log('localInfo', localInfo);
+        
         if (!localInfo) return
         const dailyInfo = await daily();
         const lifeInfo = await life();

@@ -11,20 +11,21 @@ import HeadLeft from './HeadLeft'
 
  export default class mineDetail extends Component {
     static navigationOptions = ({ navigation, screenProps }) => ({
-        hearder: null,
-        headerStyle: {
-            backgroundColor:'#fff',
-            borderBottomWidth:0,
-            elevation: 0
-        },
-        headerRightContainerStyle: {
-            padding: 20,
-            backgroundColor: 'red'
-        },
-        tabBarLabel: 'mineDetail',
-        headerLeft: (
-            <HeadLeft navigation={navigation} />
-        ),
+        header: null
+        // hearder: null,
+        // headerStyle: {
+        //     backgroundColor:'#fff',
+        //     borderBottomWidth:0,
+        //     elevation: 0
+        // },
+        // headerRightContainerStyle: {
+        //     padding: 20,
+        //     backgroundColor: 'red'
+        // },
+        // tabBarLabel: 'mineDetail',
+        // headerLeft: (
+        //     <HeadLeft navigation={navigation} />
+        // ),
         
     })
      render() {

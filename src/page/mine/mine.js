@@ -21,7 +21,8 @@ export default class Mine extends Component {
         headerStyle: {
             backgroundColor:'#fff',
             borderBottomWidth:0,
-            elevation: 0
+            elevation: 0,
+            width: 50
         },
         header: null,
         headerTitle: "我的11",

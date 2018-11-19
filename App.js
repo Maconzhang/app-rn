@@ -1,3 +1,6 @@
+import React, { Component } from 'react'
+import { View, Text, Button, Image, StyleSheet, Alert, ActivityIndicator, ScrollView,
+  TextInput } from 'react-native'
 import Home from './src/page/home/home'
 import MineGroup from './src/page/mine/MineGroup'
 import Mine from './src/page/mine/mine'
@@ -14,12 +17,15 @@ import {
 } from 'react-navigation';
 // const rnnav = require('react-navigation');
 import MineDetail from './src/page/mine/detail/mineDetail'
-
+// Mine.navigationOptions = {
+//   tabBarLabel: 'MineMine!',
+//   header: null
+// };
 const App = createMaterialTopTabNavigator(
   {
-    Mine: {
-      screen: Mine,
-    },
+    // Mine: {
+    //   screen: Mine,
+    // },
     Home: {
       screen: Home
     },
@@ -31,7 +37,7 @@ const App = createMaterialTopTabNavigator(
     swipeEnabled: false, // 是否允许在标签之间进行滑动。
     animationEnabled: false, // 是否在更改标签时显示动画。
     lazy: true, // 是否根据需要懒惰呈现标签，而不是提前制作，意思是在app打开的时候将底部标签栏全部加载，默认false,推荐改成true哦。
-    initialRouteName: 'Mine', // 设置默认的页面组件
+    initialRouteName: 'Share', // 设置默认的页面组件
     backBehavior: 'none', // 按 back 键是否跳转到第一个Tab(首页)， none 为不跳转
     tabBarOptions: {
       // ***************iOS属性***************
@@ -49,7 +55,7 @@ const App = createMaterialTopTabNavigator(
       // scrollEnabled:true, // 是否启用可滚动选项卡。
       tabStyle: {
         backgroundColor: 'green',
-        borderColor: 'black'
+        borderColor: 'black',
       }, // tab的样式。
       activeTintColor: 'white', // label和icon的前景色 活跃状态下（选中） 。
       inactiveTintColor: 'black', // label和icon的前景色 不活跃状态下(未选中)。
@@ -73,18 +79,31 @@ const App = createMaterialTopTabNavigator(
 
     }
   });
+   
   const MineStack = createBottomTabNavigator({
     App: {
       screen: App
     },
-    MineDetail: MineDetail,
+    MineDetail: { 
+      screen: MineDetail
+    }
   }, {
-    header: null
+    initialRouteName: 'MineDetail'
   });
-
   
   const index = createStackNavigator({
-    MineStack: MineStack
+    MineStack: {
+      screen: MineStack,
+      // navigationOptions: () => ({
+      //   header: null
+      // })
+    },
+    Mine: {
+      screen: Mine,
+      // navigationOptions: () => ({
+      //   header: null
+      // })
+    }
   })
 
   index.navigationOptions = ({navigation, screenProps}) => ({
@@ -97,4 +116,24 @@ const App = createMaterialTopTabNavigator(
       screen: Mine
     }
   })
-export default MineStack;
+
+  export default index;
+  // class HomeScreen extends Component {
+  //   render() {
+  //     return (
+  //       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+  //         <Text>Home Screen</Text>
+  //       </View>
+  //     );
+  //   }
+  // }
+  
+  // export default createStackNavigator({
+  //   Home: {
+  //     screen: HomeScreen,
+  //     navigationOptions: () => ({
+  //       tabBarLabel: `B`,
+  //       header: null
+  //     })
+  //   },
+  // });
