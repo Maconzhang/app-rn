@@ -40,20 +40,20 @@ export default class Home extends Component {
         
     }
 
-    static navigationOptions = ({ navigation, screenProps }) => ({
-        header:null,
-        // gesturesEnabled: true,
-        // tabBarVisible: true,
-        // tabBarLabel: 'home',
-        tabBarIcon: (({ tintColor, focused }) => {
-            return (
-                <Image
-                    source={!focused ? mine : mine_active}
-                    style={[{height: 20, width: 20}, {resizeMode: 'stretch'}]}
-                />
-            )
-        }),
-    })
+    // static navigationOptions = ({ navigation, screenProps }) => ({
+    //     header:null,
+    //     // gesturesEnabled: true,
+    //     // tabBarVisible: true,
+    //     // tabBarLabel: 'home',
+    //     tabBarIcon: (({ tintColor, focused }) => {
+    //         return (
+    //             <Image
+    //                 source={!focused ? mine : mine_active}
+    //                 style={[{height: 20, width: 20}, {resizeMode: 'stretch'}]}
+    //             />
+    //         )
+    //     }),
+    // })
 
     getIntialStaet() {
         // this._fetchWeather();
@@ -64,7 +64,6 @@ export default class Home extends Component {
     }
     async componentDidMount () {
         const localInfo = await location();
-        console.log('localInfo', localInfo);
         
         if (!localInfo) return
         const dailyInfo = await daily();
@@ -75,6 +74,8 @@ export default class Home extends Component {
             lifeInfo: lifeInfo[0],
             showLoading: false
         })
+
+        console.log('state', this.state);
     }
     componentWillReceiveProps (nextProps) {
     }
@@ -172,7 +173,7 @@ export default class Home extends Component {
                         <ActivityIndicator size="large" color="#0000ff" />
                         <ActivityIndicator size="small" color="#00ff00" />
                     </View> 
-                :  <ScrollView>
+                :  <View>
                         <View style={newStyle.containerHeader}>
                             <View>
                                 <Text style={[newStyle.txt1, newStyle.bigTxt]}>
@@ -232,7 +233,7 @@ export default class Home extends Component {
                         <TextInput></TextInput>
                         <WeatherLife lifeInfo={this.state.lifeInfo}></WeatherLife>
                         <Example></Example>
-                    </ScrollView>
+                    </View>
              }
             </View>
         )
