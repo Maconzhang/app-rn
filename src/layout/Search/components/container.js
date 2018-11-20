@@ -22,7 +22,7 @@ export default class Container extends Component {
 
     _handlePress() {
         console.log('Pressed!', "this.props");
-        this.props.navigation.navigate('Detail')
+        this.props.navigation.navigate('SearchDetail')
     }
     render() {
         return (

@@ -21,7 +21,7 @@ import {
     }
     _onBlur() {
         console.log('_onBlur', this.props);
-        this.props.navigation.navigate('Detail')
+        this.props.navigation.navigate('SearchDetail')
     }
 
     render() {
@@ -29,7 +29,7 @@ import {
             <View style={SearchHeaderStyle.container}>
                 <View style={SearchHeaderStyle.c_icon}>
                     <Image
-                    style={{width: 25, height: 25}}
+                    style={{width: 20, height: 20}}
                     source={require('../../../img/searchBar.png')}
                     />
                 </View>
@@ -49,7 +49,7 @@ import {
       container: {
           height: 54,
           backgroundColor: '#2196F3',
-          flexDirection: 'row'
+          flexDirection: 'row',
       },
       c_icon: {
           width: 15 + '%',

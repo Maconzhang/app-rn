@@ -81,7 +81,7 @@ const BottomTab = createBottomTabNavigator({
   }
 })
 
-import Detail from './Detail/Detail'
+import SearchDetail from './Detail/SearchDetail'
 const App = createStackNavigator({
   BottomTab: {
     screen: BottomTab,
@@ -89,8 +89,12 @@ const App = createStackNavigator({
       header: null
     })
   },
-  Detail: {
-    screen: Detail
+  SearchDetail: {
+    screen: SearchDetail,
+    navigationOptions: () => ({
+      // headerBackground: 'red',
+      // headerTransparent: false
+    })
   }
 }, {
   lazy: true
