@@ -11,8 +11,8 @@ import {
 import Back from './components/Back'
 import SearchInput from './components/SearchInput'
 // import SearchStore from './store/SearchStore'
-// import {observer} from 'mobx-react/native';
-// import {observable, action} from 'mobx';
+import {observer} from 'mobx-react/native';
+import {observable} from 'mobx';
 
 // @inject('SearchStore')
 // @observer
@@ -27,7 +27,6 @@ class HeadLeft extends Component {
             inputValue: ''
         }
 
-        console.log("this.SearchStore", this.SearchStore);
     }
     
     render() {
@@ -37,13 +36,13 @@ class HeadLeft extends Component {
                 <SearchInput inputValue={this.state.inputValue}/>
             </View>
         )
-    }
+    }    
 }
 
 export default class Detail extends Component {
     static navigationOptions = ({ navigation, screenProps }) => ({
-        // gesturesEnabled: true,
-        // tabBarVisible: true,
+        gesturesEnabled: true,
+        tabBarVisible: true,
         headerLeft: (
             <HeadLeft navigation={navigation} />
         ),
