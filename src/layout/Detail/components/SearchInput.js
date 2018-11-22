@@ -4,18 +4,19 @@ import {
     TextInput
  } from 'react-native'
 
-export default class SearchInput extends Component {
-    constructor(props) {
-        super(props)
-    }
+ import SearchStore from '../store/SearchStore'
+ import { inject, Provider, observer } from 'mobx-react';
 
+@observer
+export default class SearchInput extends Component {
+    
     _changeValue (e) {
-        console.log('c_value',  e.nativeEvent.text, this.props);
-        this.props.inputValue =  e.nativeEvent.text
+        SearchStore._changeInputValue(e.nativeEvent.text);
     }
     render() {
         return (
                 <TextInput 
+                value={SearchStore.inputValue}
                 autoFocus={true}
                 selectionColor={'white'}
                 placeholder="搜索"

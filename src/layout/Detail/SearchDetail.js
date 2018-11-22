@@ -10,35 +10,26 @@ import {
 } from 'react-native'
 import Back from './components/Back'
 import SearchInput from './components/SearchInput'
-// import SearchStore from './store/SearchStore'
-import {observer} from 'mobx-react/native';
+import SearchStore from './store/SearchStore'
+import { inject, Provider, observer } from 'mobx-react';
 import {observable} from 'mobx';
 
-// @inject('SearchStore')
-// @observer
 class HeadLeft extends Component {
     constructor(props) {
         super(props);
-        // this.SearchStore = new SearchStore
-        console.log('xxx12345');
-        
-        // console.log('props', this.props, this.SearchStore)
-        this.state = {
-            inputValue: ''
-        }
-
     }
     
     render() {
         return (
             <View style={{ width: 100 + '%', flexDirection: 'row'}}>
                 <Back navigation={this.props.navigation}/>
-                <SearchInput inputValue={this.state.inputValue}/>
+                <SearchInput/>
             </View>
         )
     }    
 }
 
+@observer
 export default class Detail extends Component {
     static navigationOptions = ({ navigation, screenProps }) => ({
         gesturesEnabled: true,
@@ -56,9 +47,19 @@ export default class Detail extends Component {
 
     render() {
         return (
-            <View>
-                <Text>DetailDetail</Text>
-            </View>
+            <Provider SearchStore={SearchStore}>
+                <View>
+                    <Text>{ SearchStore.inputValue }</Text>
+                    <View style={{ 
+                        borderColor: 'black',
+                        borderWidth: 4,
+                        position: 'relative',
+                        top: 100 + '%'
+                    }}>
+                        <Text>1234</Text>
+                    </View>
+                </View>
+            </Provider>
         )
     }
 }

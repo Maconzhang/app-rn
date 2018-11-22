@@ -9,7 +9,6 @@ import {
 export default class Back extends Component {
     constructor(props) {
         super(props);
-        console.log('props', this.props);
         this._goBack = this._goBack.bind(this);
     }
 

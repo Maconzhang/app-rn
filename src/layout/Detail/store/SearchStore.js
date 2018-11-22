@@ -1,13 +1,13 @@
-// import { observable, configure, action, computed } from 'mobx'
+import { observable, configure, action, computed } from 'mobx'
 
-// class SearchStore {
-//     @observable inputValue = ''
-
-
-//     @action _changeInputValue = (value) => {
-//         this.inputValue = value;
-//     }
-// }
+class SearchStore {
+    @observable inputValue = ''
 
 
-// export default SearchStore;
+    @action _changeInputValue = (value) => {
+        this.inputValue = value;
+    }
+}
+
+
+export default new SearchStore();
