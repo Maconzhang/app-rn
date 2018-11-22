@@ -118,7 +118,10 @@ const BottomNav = StyleSheet.create({
 
 const BottomTab = createBottomTabNavigator({
   Work: {
-    screen: Work
+    screen: Work,
+    // navigationOptions: () => ({
+    //   header: null
+    // })
   },
   Order: {
     screen: Order
@@ -131,7 +134,7 @@ const BottomTab = createBottomTabNavigator({
   lazy: true,
   tabBarComponent:  props =>
   <Test {...props}/>,
-  initialRouteName: 'My',
+  initialRouteName: 'Work',
   tabBarOptions: {
     showIcon: true,
     showLabel: true,

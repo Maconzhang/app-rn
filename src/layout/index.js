@@ -144,7 +144,7 @@ const BottomTab = createBottomTabNavigator({
   lazy: true,
   // tabBarComponent:  props =>
   // <Test {...props}/>,
-  initialRouteName: 'Work',
+  initialRouteName: 'Search',
   tabBarOptions: {
     showIcon: true,
     showLabel: true,
