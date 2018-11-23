@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {
     View,
-    Text
+    Text,
+    ScrollView
 } from 'react-native'
 import {
     createStackNavigator,
@@ -10,7 +11,7 @@ import {
     createMaterialTopTabNavigator,
     createMaterialBottomTabNavigator
   } from 'react-navigation';
-import HeaderLeft from './components/HeaderLeft'
+import HeaderLeft from './components/headerLeft'
 import MainBody from './components/MainBody'
 class Work extends Component {
     static navigationOptions = ({ navigation, screenProps }) => ({
@@ -35,7 +36,9 @@ class Work extends Component {
     })
     render() {
         return (
-            <MainBody/>
+            <ScrollView>
+                <MainBody/>
+            </ScrollView>
         )
     }
 }

@@ -4,7 +4,8 @@ import {
     View,
     StyleSheet,
     TouchableNativeFeedback,
-    Image
+    Image,
+    ScrollView
 } from 'react-native'
 
 export default class MainBody extends Component {
@@ -37,10 +38,44 @@ export default class MainBody extends Component {
                         <Image style={ MainStyle.rightPng } source={require('../../../img/forward_grey.png')}></Image>
                     </View>
                     <View style={ MainStyle.orderDetail2 }>
-                        <Text style={[ MainStyle.orderDetail2Item]}>剩余时间</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车辆</Text>
                         <Text style={[ MainStyle.orderDetail2Item]}>15分钟</Text>
                     </View>
-                    
+                    <View style={ MainStyle.orderDetail2 }>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车辆编号</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>574100078</Text>
+                    </View>
+                    <View style={ MainStyle.orderDetail2 }>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车牌号</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>宁YC3965</Text>
+                    </View>
+                    <View style={ MainStyle.orderDetail2 }>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车辆位置</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>鄞州科技信息孵化园</Text>
+                    </View>
+                </View>
+                <View style={ MainStyle.orderItem}>
+                    <View style={ MainStyle.orderDetail1}>
+                        <Text style={{ fontSize: 30, lineHeight: 66, height: 66}}>已接单</Text>
+                        <Text style={{ fontSize: 30, lineHeight: 66, height: 66}}>·换电</Text>
+                        <Image style={ MainStyle.rightPng } source={require('../../../img/forward_grey.png')}></Image>
+                    </View>
+                    <View style={ MainStyle.orderDetail2 }>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车辆</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>15分钟</Text>
+                    </View>
+                    <View style={ MainStyle.orderDetail2 }>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车辆编号</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>574100078</Text>
+                    </View>
+                    <View style={ MainStyle.orderDetail2 }>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车牌号</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>宁YC3965</Text>
+                    </View>
+                    <View style={ MainStyle.orderDetail2 }>
+                        <Text style={[ MainStyle.orderDetail2Item]}>车辆位置</Text>
+                        <Text style={[ MainStyle.orderDetail2Item]}>鄞州科技信息孵化园</Text>
+                    </View>
                 </View>
             </View>
         )
@@ -91,7 +126,8 @@ const MainStyle = StyleSheet.create({
         height: 306,
         backgroundColor: 'white',
         marginTop: 21,
-        paddingTop: 0
+        paddingTop: 0,
+        borderRadius: 5
     },
     orderDetail1: {
         height: 66, 
@@ -106,7 +142,7 @@ const MainStyle = StyleSheet.create({
         marginLeft: 22, 
         marginRight: 22 , 
         borderBottomColor: '#E5E5E5', 
-        borderBottomWidth: 2,
+        borderBottomWidth: 1,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
