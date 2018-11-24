@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import {
     View,
-    Text
+    Text,
+    UIManager
 } from 'react-native'
+import { MapView, Marker, Polyline} from 'react-native-amap3d'
+// import { MapView } from 'react-native-maps'
 import {
     createStackNavigator,
     TabNavigator,
@@ -12,10 +15,15 @@ import {
   } from 'react-navigation';
 
 class Order extends Component {
+    constructor() {
+        super();
+        console.log('MapView', MapView);
+    }
     render() {
         return (
             <View>
                 <Text>Order</Text>
+                <MapView />
             </View>
         )
     }
