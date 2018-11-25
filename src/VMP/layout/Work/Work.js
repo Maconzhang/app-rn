@@ -11,7 +11,7 @@ import {
     createMaterialTopTabNavigator,
     createMaterialBottomTabNavigator
   } from 'react-navigation';
-import HeaderLeft from './components/headerLeft'
+import HeaderLeft from './components/HeaderLeft'
 import MainBody from './components/MainBody'
 class Work extends Component {
     static navigationOptions = ({ navigation, screenProps }) => ({

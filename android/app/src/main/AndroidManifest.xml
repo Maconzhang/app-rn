@@ -31,8 +31,11 @@
       android:allowBackup="false"
       android:theme="@style/AppTheme">
       <meta-data
-      android:name="com.amap.api.v2.apikey"
-      android:value="57bad09230b03ce7c587eea12a178c24"/>
+    android:name="com.amap.api.v2.apikey"
+    android:value="57bad09230b03ce7c587eea12a178c24" />
+        <meta-data
+      android:name="com.baidu.lbsapi.API_KEY"
+      android:value="57bad09230b03ce7c587eea12a178c24" />
 
       <activity
         android:name=".MainActivity"
