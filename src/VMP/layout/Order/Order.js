@@ -6,6 +6,7 @@ import {
 } from 'react-native'
 import { MapView, Marker, Polyline, Location } from 'react-native-amap3d'
 // import { MapView } from 'react-native-maps'
+// import { MapView } from 'react-native-baidumap-sdk'
 import {
     createStackNavigator,
     TabNavigator,
@@ -95,6 +96,7 @@ class Order extends Component {
                     })}
                     
                 </MapView>          
+                 
             </View>
         )
     }

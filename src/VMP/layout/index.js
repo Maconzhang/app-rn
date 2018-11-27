@@ -23,7 +23,7 @@ import {
 // const profile_inactive = require('../../../img/profile.png');
 // const profile_active = require('../../../img/profile-actived.png');
 import {BoxShadow, BorderShadow, Shadow} from 'react-native-shadow'
-
+import { setSpText, autoWidth, autoHeight } from '../utils/layout'
 class Test extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +57,7 @@ class Test extends Component {
                     <Image 
                     style={BottomNav.centerImg}  
                     source={require('../img/qiang.png')}></Image>
-                    <Text style={{marginTop: 40, textAlign: 'center',}}>抢单</Text>
+                    <Text style={{marginTop: autoHeight(30), textAlign: 'center',}}>抢单</Text>
                 </TouchableOpacity>
               </View>
               <View style={BottomNav.containerItem}>
@@ -77,8 +77,9 @@ const BottomNav = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: 'white',
-    padding: 10,
-    height: 75,
+    paddingTop: autoHeight(5),
+    paddingBottom: autoHeight(15),
+    height: autoHeight(50),
     elevation: 1,
     borderWidth: 1,
     borderRadius: 2,
@@ -97,22 +98,22 @@ const BottomNav = StyleSheet.create({
     textAlign: 'center',
   },
   sideItem: {
-    width: 40,
-    height: 40,
+    width: autoWidth(30),
+    height: autoHeight(30),
     marginBottom: 0,
     alignSelf: 'center',
     justifyContent: 'center',
   },
   centerImg: {
     position: 'absolute', 
-    width: 73,
-    height: 73,
-    top: -38,
+    width: autoWidth(56),
+    height: autoHeight(56),
+    top: autoHeight(-29),
     alignSelf: 'center',
     justifyContent: 'center',
     borderWidth: 5,
     borderColor: 'white',
-    borderRadius: 35
+    borderRadius:  autoWidth(30)
   }
 })
 
