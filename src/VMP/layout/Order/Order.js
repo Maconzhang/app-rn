@@ -21,6 +21,24 @@ class Order extends Component {
         this.state = {
             x: '',
             time: new Date(),
+            lnglat: [
+                {
+                    latitude: 39.806901,
+                    longitude: 116.397972,
+                },
+                {
+                    latitude: 39.806901,
+                    longitude: 116.297972,
+                },
+                {
+                    latitude: 39.906901,
+                    longitude: 116.397972,
+                },
+                {
+                    latitude: 39.706901,
+                    longitude: 116.397972,
+                },
+            ]
         }
         // Location.init()
         // Location.addLocationListener(location => {
@@ -61,7 +79,8 @@ class Order extends Component {
                         latitude: 39.91095,
                         longitude: 116.37296,
                     }}>
-                    <Marker
+                    {/* { this.state.lnglat.map(item => { */}
+                        <Marker
                         active
                         draggable
                         title="一个可拖拽的标记"
@@ -73,6 +92,8 @@ class Order extends Component {
                             longitude: 116.37296,
                         }}
                         />
+                    })}
+                    
                 </MapView>          
             </View>
         )

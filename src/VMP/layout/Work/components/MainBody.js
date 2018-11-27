@@ -7,8 +7,14 @@ import {
     Image,
     ScrollView
 } from 'react-native'
-
+import Dimensions from 'Dimensions';
+let {width, height} = Dimensions.get('window');
 export default class MainBody extends Component {
+    constructor() {
+        super();
+        console.log('w', width, height);
+        
+    }
     render() {
         return (
             <View style={ MainStyle.container }>
