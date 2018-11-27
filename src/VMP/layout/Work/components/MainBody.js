@@ -28,22 +28,22 @@ export default class MainBody extends Component {
                     <Text style={ MainStyle.boxFooter }>今日收入（元）</Text>
                 </View>
                 <View style={ MainStyle.total }>
-                    <Text style={{height: autoHeight(40), lineHeight: autoHeight(40),marginLeft: autoWidth(15), fontSize: setSpText(16)}}>本月信息汇总</Text>
+                    <Text style={{height: autoHeight(44), lineHeight: autoHeight(44),marginLeft: autoWidth(15), fontSize: setSpText(16)}}>本月信息汇总</Text>
                     <Image style={ MainStyle.rightPng } source={require('../../../img/forward_grey.png')}></Image>
                 </View>
                 <View style={ [MainStyle.total, { marginTop: 21 }] }>
-                    <Text style={{ height: autoHeight(40), lineHeight: autoHeight(40), fontSize: setSpText(16), width: 50 + '%', paddingLeft: autoWidth(15) }}>本月信息汇总</Text>
-                    <View style={{ height: autoHeight(40), lineHeight: autoHeight(40), width: 50 + '%'}}>
+                    <Text style={{ height: autoHeight(44), lineHeight: autoHeight(44), fontSize: setSpText(16), width: 50 + '%', paddingLeft: autoWidth(15) }}>待完成订单</Text>
+                    <View style={{ height: autoHeight(44), lineHeight: autoHeight(44), width: 50 + '%'}}>
                         <Text style={{ 
-                            textAlign: 'right', height: autoHeight(40), lineHeight: autoHeight(40), marginRight: autoWidth(39), fontSize: setSpText(14), color: '#A4A4A4'}}>
+                            textAlign: 'right', height: autoHeight(44), lineHeight: autoHeight(44), marginRight: autoWidth(39), fontSize: setSpText(14), color: '#A4A4A4'}}>
                             查看全部订单</Text>
                         <Image style={ MainStyle.rightPng } source={require('../../../img/forward_grey.png')}></Image>
                     </View>
                 </View>
                 <View style={ MainStyle.orderItem}>
                     <View style={ MainStyle.orderDetail1}>
-                        <Text style={{ fontSize: setSpText(16), lineHeight: autoHeight(40), height: autoHeight(40)}}>已接单</Text>
-                        <Text style={{ fontSize: setSpText(16), lineHeight: autoHeight(40), height: autoHeight(40)}}>·换电</Text>
+                        <Text style={{ fontSize: setSpText(16), lineHeight: autoHeight(44), height: autoHeight(44)}}>已接单</Text>
+                        <Text style={{ fontSize: setSpText(16), lineHeight: autoHeight(44), height: autoHeight(44)}}>·换电</Text>
                         <Image style={ MainStyle.rightPng } source={require('../../../img/forward_grey.png')}></Image>
                     </View>
                     <View style={ MainStyle.orderDetail2 }>

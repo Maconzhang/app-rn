@@ -8,9 +8,13 @@ import {
 } from 'react-native'
 import { setSpText, autoWidth, autoHeight } from '../../../utils/layout'
 export default class HeaderLeft extends Component {
-
+    constructor(props) {
+        super(props);
+        this.navigation = props.navigation;
+    }
     _changeOrderStatus () {
         console.log('xxx');
+        this.navigation.push('AutoOrderSet');
     }
     render() {
         return (
