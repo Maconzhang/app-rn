@@ -35,27 +35,13 @@ export default class MultiPointExample extends Component {
   render() {
     return (
       <MapView zoomLevel={12} style={StyleSheet.absoluteFill}>
-        {/* <MapView.MultiPoint 
+        <MapView.MultiPoint 
           style={MainStyle.icon}
           image="bike_battery2"
           points={this._points}
           onItemPress={this._onItemPress}
         >
-        </MapView.MultiPoint> */}
-       { 
-         this._points.map(item => {
-          <MapView.Marker
-            active
-            draggable
-            title="一个可拖拽的标记"
-            // description={this.state.time.toLocaleTimeString()}
-            onDragEnd={this._onDragEvent}
-            onInfoWindowPress={this._onInfoWindowPress}
-            coordinate={this._points[0]}
-          />
-        })
-      }
-        
+        </MapView.MultiPoint>
       </MapView>
     )
   }
