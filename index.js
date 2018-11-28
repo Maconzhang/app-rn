@@ -7,14 +7,15 @@
 
 // Object.assign(babelHelpers, { applyDecoratedDescriptor, initializerDefineProperty });
 
-import {AppRegistry} from 'react-native';
+import {AppRegistry, Text} from 'react-native';
 // import App from './App';
 
 //now
 // import App from './src/layout/index';
 
 //vmp
-import App from './src/VMP/layout/index'
+import App from './src/VMP/layout/index';
 import {name as appName} from './app.json';
-
+import { setCustom } from './src/VMP/utils/custom';
+setCustom(Text, { style: { color: '#000000'}});
 AppRegistry.registerComponent(appName, () => App);

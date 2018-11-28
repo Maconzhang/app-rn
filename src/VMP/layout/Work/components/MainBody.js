@@ -8,6 +8,7 @@ import {
     ScrollView
 } from 'react-native'
 import { setSpText, autoWidth, autoHeight } from '../../../utils/layout'
+import S from '../../../components/Swicth'
 import {Dimensions, PixelRatio} from 'react-native';
 export default class MainBody extends Component {
     constructor() {
@@ -19,6 +20,10 @@ export default class MainBody extends Component {
     render() {
         return (
             <View style={ MainStyle.container }>
+                {/* <S></S>
+                <View style={ MainStyle.switch}>
+                    <View style={ MainStyle.switchItem}></View>
+                </View> */}
                 <View style={[ MainStyle.box, { width: 38 + '%' }]}>
                     <Text style={ MainStyle.boxHeader }>2</Text>
                     <Text style={ MainStyle.boxFooter }>今日接单</Text>
@@ -69,6 +74,21 @@ export default class MainBody extends Component {
 }
 
 const MainStyle = StyleSheet.create({
+    switch: {
+        width: 80,
+        height: 40,
+        borderRadius: 40,
+        borderColor: 'black',
+        borderWidth: 1,
+        backgroundColor: 'white'
+    },
+    switchItem: {
+        width: 40,
+        height: 40,
+        borderRadius: 40,
+        backgroundColor: 'red',
+        marginLeft: 0
+    },
     container: {
         flexDirection: 'row',
         flexWrap: 'wrap',

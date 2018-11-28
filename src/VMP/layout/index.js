@@ -3,6 +3,7 @@ import { View, Text, Button, Image, StyleSheet, Alert, ActivityIndicator, Scroll
   TextInput,
   TouchableOpacity,
   TouchableHighlight,
+  Switch
 } from 'react-native'
 import Order from './Order/Order'
 import My from './My/My'
@@ -32,7 +33,12 @@ class Test extends Component {
   }
 
   _onGoPath (path) {
-    this.navigation.navigate(path);
+    if (path == 'Order') {
+      this.navigation.navigate(path);
+    } else {
+      console.log('xxx');
+      this.navigation.push(path);
+    }
     console.log('path', this.props.navigation.state);
   }
 
@@ -42,16 +48,14 @@ class Test extends Component {
   render() {
     return (
         <View style={BottomNav.container}>
-                <View style={BottomNav.containerItem} >
-                    <TouchableOpacity onPress={ () => this._onGoPath('Work')}>
-                        <Image 
-                        style={BottomNav.sideItem} 
-                        source={ this.props.navigation.state['index'] !== 0 ? require('../img/desk0.png') : require('../img/desk1.png')}></Image>
-                        <Text style={BottomNav.containerItemTxt}>工作台</Text>
-                    </TouchableOpacity>
-                </View>
-              
-              
+              <View style={BottomNav.containerItem} >
+                  <TouchableOpacity onPress={ () => this._onGoPath('Work')}>
+                      <Image 
+                      style={BottomNav.sideItem} 
+                      source={ this.props.navigation.state['index'] !== 0 ? require('../img/desk0.png') : require('../img/desk1.png')}></Image>
+                      <Text style={BottomNav.containerItemTxt}>工作台</Text>
+                  </TouchableOpacity>
+              </View>
               <View style={BottomNav.containerItem}>
                 <TouchableOpacity onPress={ () => this._onGoPath('Order')}>
                     <Image 
@@ -124,9 +128,6 @@ const BottomTab = createBottomTabNavigator({
     //   header: null
     // })
   },
-  Order: {
-    screen: Order
-  },
   My: {
     screen: My
   },
@@ -134,7 +135,7 @@ const BottomTab = createBottomTabNavigator({
   tabBarPosition: 'bottom',
   lazy: true,
   tabBarComponent:  props =>
-  <Test {...props}/>,
+    <Test {...props}/>,
   initialRouteName: 'Work',
   tabBarOptions: {
     showIcon: true,
@@ -159,10 +160,39 @@ const App = createStackNavigator({
   },
   AutoOrderSet: {
     screen: AutoOrderSet
-  }
+  },
+  Order: {
+    screen: Order
+  },
 }, {
   lazy: true
 })
 
+/**
+ * 自定义默认Text样式
+ * @param customProps
+ */
+// const setCustomText = customProps => {
+//   const TextRender = Text.prototype.render;
+//   const initialDefaultProps = Text.prototype.constructor.defaultProps;
+//   Text.prototype.constructor.defaultProps = {
+//       ...initialDefaultProps,
+//       ...customProps
+//   };
+//   Text.prototype.render = function render() {
+//       let oldProps = this.props;
+//       this.props = {
+//           ...this.props,
+//           style: [customProps.style, this.props.style]
+//       };
+//       try {
+//           return TextRender.apply(this, arguments);
+//       } finally {
+//           this.props = oldProps;
+//       }
+//   };
+// };
+
+console.log('text', Text);
 
 export default App;
