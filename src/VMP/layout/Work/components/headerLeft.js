@@ -33,7 +33,7 @@ export default class HeaderLeft extends Component {
                     textAlign: 'center',
                     fontSize: setSpText(20)
                     }}>工作台</Text>
-                <TouchableNativeFeedback>
+                <TouchableNativeFeedback onPress={ () => { this.navigation.push('QrCode'); }}>
                     <View style={{
                         width: 33 + '%',
                         flexDirection: 'row-reverse',

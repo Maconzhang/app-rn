@@ -9,12 +9,15 @@
     "android": "react-native run-android"
   },
   "dependencies": {
+    "ac-qrcode": "^1.0.1",
     "antd-mobile-rn": "^2.3.1",
     "babel-plugin-import": "^1.11.0",
     "mobx": "^4.2.0",
     "mobx-react": "^5.0.0",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
+    "react-native-barcodescanner": "^3.1.1",
+    "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
     "react-native-maps": "^0.22.1",
     "react-native-navigation": "^2.0.2641",
     "react-native-shadow": "^1.2.2",

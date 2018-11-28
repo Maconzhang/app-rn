@@ -151,6 +151,7 @@ const BottomTab = createBottomTabNavigator({
   }
 })
 import AutoOrderSet from './pages/orderSet/index'
+import QrCode from './pages/qrCode/index'
 const App = createStackNavigator({
   BottomTab: {
     screen: BottomTab,
@@ -164,6 +165,9 @@ const App = createStackNavigator({
   Order: {
     screen: Order
   },
+  QrCode: {
+    screen: QrCode
+  }
 }, {
   lazy: true
 })
