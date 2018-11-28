@@ -149,13 +149,16 @@ const BottomTab = createBottomTabNavigator({
     }
   }
 })
-
+import AutoOrderSet from './pages/orderSet/index'
 const App = createStackNavigator({
   BottomTab: {
     screen: BottomTab,
     navigationOptions: () => ({
       header: null
     })
+  },
+  AutoOrderSet: {
+    screen: AutoOrderSet
   }
 }, {
   lazy: true
