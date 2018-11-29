@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
     View,
     Text,
+    UIManager
 } from 'react-native'
 import { MapView, Marker, Polyline, Location } from 'react-native-amap3d'
 // import { MapView } from 'react-native-maps'
@@ -13,7 +14,7 @@ import {
     createMaterialTopTabNavigator,
     createMaterialBottomTabNavigator
   } from 'react-navigation';
-import Example from './components/example'
+import Example from './conponents/example'
 class Order extends Component {
     constructor() {
         super();
@@ -71,7 +72,6 @@ class Order extends Component {
             },
         ]
     }
-
     render() {
         return (
             <View>
@@ -94,28 +94,28 @@ class Order extends Component {
                         }}
                         />
                     })}
+                    
                 </MapView>          
+                 
             </View>
         )
     }
 }
 
-export default Example
-
-// export default MainOrder = createStackNavigator({
-//     Order: {
-//         screen: Example,
-//         navigationOptions: ({ navigation, screenProps }) => ({
-//             headerTitle: "Order",
-//             headerStyle: {
-//                 backgroundColor: '#2196F3',
+export default MainOrder = createStackNavigator({
+    Order: {
+        screen: Example,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            headerTitle: "Order",
+            headerStyle: {
+                backgroundColor: '#2196F3',
                 
-//             },
-//             headerTitleStyle: {
-//                 width: 100 + '%',
-//                 textAlign: 'center',
-//                 color: 'white'
-//             }
-//         })
-//     }
-// })
+            },
+            headerTitleStyle: {
+                width: 100 + '%',
+                textAlign: 'center',
+                color: 'white'
+            }
+        })
+    }
+})

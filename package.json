@@ -9,8 +9,6 @@
     "android": "react-native run-android"
   },
   "dependencies": {
-    "antd-mobile-rn": "^2.3.1",
-    "babel-plugin-import": "^1.11.0",
     "mobx": "^4.2.0",
     "mobx-react": "^5.0.0",
     "react": "16.6.0-alpha.8af6728",

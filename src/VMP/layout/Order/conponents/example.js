@@ -1,24 +1,16 @@
 import React, { Component } from 'react'
 import { StyleSheet, Alert, ViewPropTypes, Text  } from 'react-native'
 import { MapView } from 'react-native-amap3d'
-import HeaderLeft from './HeaderLeft'
-import { setSpText, autoWidth, autoHeight } from './../../../utils/layout'
+
 export default class MultiPointExample extends Component {
   constructor() {
     super();
+    console.log('eee', { ...ViewPropTypes }, StyleSheet);
+    
   }
-  
-  static navigationOptions = ({ navigation, screenProps }) => ({
-    headerLeft: (
-      <HeaderLeft navigation={navigation} />
-    ),
-    headerLeftContainerStyle: {
-      width: 100 + '%',
-    },
-    headerStyle: {
-        backgroundColor: '#2196F3'
-    }
-  })
+  static navigationOptions = {
+    title: '海量点',
+  }
 
   _points = Array(1000).fill(0).map(() => ({
     latitude: 39.5 + Math.random(),
@@ -27,14 +19,17 @@ export default class MultiPointExample extends Component {
 
   _onItemPress = point => {
     console.log('e', point, this._points.indexOf(point).toString());
+    // Alert.alert(this._points.indexOf(point).toString())
   }
 
   _onDragEvent = point => {
     console.log('e', point, this._points.indexOf(point).toString());
+    // Alert.alert(this._points.indexOf(point).toString())
   }
 
   _onInfoWindowPress = point => {
     console.log('e', point, this._points.indexOf(point).toString());
+    // Alert.alert(this._points.indexOf(point).toString())
   }
 
   render() {
