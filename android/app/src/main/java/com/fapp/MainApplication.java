@@ -1,9 +1,9 @@
 package com.fapp;
 
 import android.app.Application;
-import com.lwansbrough.RCTCamera.*;
+// import com.lwansbrough.RCTCamera.*;
 import com.facebook.react.ReactApplication;
-import com.eguma.barcodescanner.BarcodeScannerPackage;
+// import com.eguma.barcodescanner.BarcodeScannerPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import org.reactnative.camera.RNCameraPackage;
 import cn.qiuxiang.react.amap3d.AMap3DPackage;
@@ -28,8 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            // new BarcodeScannerPackage(),
            new RCTCameraPackage(),
-            new BarcodeScannerPackage(),
             new MapsPackage(),
             new RNCameraPackage(),
             new AMap3DPackage(),
