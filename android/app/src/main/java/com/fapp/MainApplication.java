@@ -5,7 +5,7 @@ import org.reactnative.camera.RNCameraPackage;
 import com.facebook.react.ReactApplication;
 // import com.eguma.barcodescanner.BarcodeScannerPackage;
 import com.airbnb.android.react.maps.MapsPackage;
-import org.reactnative.camera.RNCameraPackage;
+// import org.reactnative.camera.RNCameraPackage;
 import cn.qiuxiang.react.amap3d.AMap3DPackage;
 import com.horcrux.svg.SvgPackage;
 import com.facebook.react.ReactNativeHost;

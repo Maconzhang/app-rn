@@ -9,7 +9,7 @@ import {
 import { setSpText, autoWidth, autoHeight } from '../../../utils/layout'
 // import { QRScannerView } from 'ac-qrcode';
 // import BarcodeScanner from 'react-native-barcodescanner';
-import {   RNCamera   } from 'react-native-camera'
+// import {   RNCamera   } from 'react-native-camera'
 // var Camera = require('react-native-camera');
 // console.log('Camera', FaceDetector);
 import { NativeModules } from 'react-native'
