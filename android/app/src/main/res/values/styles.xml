@@ -3,34 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:textColor">#000000</item>
     </style>
-    <style name="Color1SwitchStyle">
-        <item name="colorControlActivated">@color/white</item>
-        <!-- Inactive thumb color switch关闭时的拇指按钮的颜色 -->
-        <item name="colorSwitchThumbNormal">@color/black</item>
-        <!-- Inactive track color(30% transparency) switch关闭时的轨迹的颜色  30%这个颜色 -->
-        <item name="android:colorForeground">@color/blue</item>
-    <style>
-    <style name="MySwitch" parent="Theme.AppCompat.Light">
-        <!-- Active thumb color & Active track color(30% transparency)
-            switch 打开时的拇指按钮的颜色 轨迹颜色默认为30%这个颜色 -->
-        <!-- <item name="colorControlActivated">#eeeee</item> -->
-        <!-- Inactive thumb color switch关闭时的拇指按钮的颜色 -->
-        <!-- <item name="colorSwitchThumbNormal">#007ACC</item> -->
-        <!-- Inactive track color(30% transparency) switch关闭时的轨迹的颜色  30%这个颜色 -->
-        <!-- <item name="android:colorForeground">#007ACC</item> -->
-        <!--使用方法：
-        在布局文件中给需要自定义控件中增加app:theme="@style/MySwitch"-->
-
-        <item name="colorControlActivated">#46bdbf</item>
-
-        <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">#f1f1f1</item>
-
-        <!-- inactive track color (30% transparency) -->
-        <item name="android:colorForeground">#42221f1</item>
-    </style>
+     
 
 
 </resources>
